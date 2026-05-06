@@ -20,6 +20,34 @@
   gap: 20px;
 }
 
+/* Кнопка-бургер */
+.burgerBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.burgerBtn:hover {
+  background-color: #f0f0f0;
+}
+
+.burgerLine {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
 /* Логотип */
 .logo a {
   font-size: 24px;
@@ -81,14 +109,23 @@
   gap: 20px;
 }
 
+.homeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
 .userIcon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
   padding: 5px;
   object-fit: cover;
   cursor: pointer;
@@ -106,37 +143,13 @@
 }
 
 /* Кошик */
-.cart {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-}
-
 .cartIcon {
   font-size: 18px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
+  width: 19px;
+  height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.cartCount {
-  background-color: #ff4d4d;
-  color: white;
-  font-size: 12px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: -10px;
-  right: -10px;
 }
 
 /* Адаптивність для мобільних пристроїв */

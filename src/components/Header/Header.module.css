@@ -89,6 +89,7 @@
 
 .searchButton {
   padding: 8px 15px;
+  padding-bottom: 5px;
   background-color: whitesmoke;
   border: none;
   border-radius: 0 10px 10px 0;

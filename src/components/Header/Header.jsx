@@ -34,7 +34,7 @@ function Header() {
             <form className={styles.searchForm}>
               <input
                 type="text"
-                placeholder="Пошук товарів..."
+                placeholder="Search..."
                 className={styles.searchInput}
               />
               <button type="submit" className={styles.searchButton}>

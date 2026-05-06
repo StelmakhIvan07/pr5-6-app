@@ -41,8 +41,8 @@ function Catalog({ isOpen, onClose }) {
       {/* Бокова панель */}
       <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Каталог</h2>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Закрити каталог">
+          <h2 className={styles.title}>Catalog</h2>
+          <button className={styles.closeBtn} onClick={onClose} aria-label="Close catalog">
             ✕
           </button>
         </div>

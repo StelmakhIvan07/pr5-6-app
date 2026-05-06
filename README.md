@@ -1,6 +1,6 @@
 # About project
 
-This project is designed by CS11 students Stelmakh Ivan and Davyd Press for the web cource practice part.
+This project is designed by CS11 students Stelmakh Ivan and Davyd Press for the web course practice part.
 
 Stack: React and CSS components / Spring Boot DB based on Java.
 

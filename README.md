@@ -1,3 +1,9 @@
+# About project
+
+This project is designed by CS11 students Stelmakh Ivan and Davyd Press for the web cource practice part.
+
+Stack: React and CSS components / Spring Boot DB based on Java.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

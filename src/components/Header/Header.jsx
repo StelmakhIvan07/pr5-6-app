@@ -6,7 +6,7 @@ import Catalog from "../Menu/Catalog/Catalog";
 import homeIcon from '../../assets/icons/home.png';
 import cartIcon from '../../assets/icons/cart.png';
 
-function Header() {
+function Header({ onAuthClick }) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
 
   return (
@@ -48,9 +48,13 @@ function Header() {
             <nav className={styles.navigation}>
               <a href="/" className={styles.navLink}>
                 <img src={homeIcon} alt="Home" className={styles.homeIcon} /></a>
-              <a href="/register" className={styles.navLink}>
+              <button 
+                className={styles.navLink} 
+                onClick={onAuthClick}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
                 <img src={userIcon} alt="Register" className={styles.userIcon} />
-              </a>
+              </button>
               <div className={styles.cart}>
                 <img src={cartIcon} alt="Cart" className={styles.cartIcon} />
               </div>

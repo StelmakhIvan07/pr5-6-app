@@ -9,7 +9,10 @@ import { API_URL } from './consts.js';
 export async function registerUser({ username, email, password }) {
   const response = await fetch(`${API_URL}/api/users/register`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'true',
+    },
     credentials: 'include',            // передаємо/отримуємо куки
     body: JSON.stringify({ username, email, password }),
   });
@@ -31,7 +34,10 @@ export async function registerUser({ username, email, password }) {
 export async function loginUser({ email, password }) {
   const response = await fetch(`${API_URL}/api/users/login`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'true',
+    },
     credentials: 'include',
     body: JSON.stringify({ email, password }),
   });
@@ -53,6 +59,7 @@ export async function logoutUser() {
   const response = await fetch(`${API_URL}/api/users/logout`, {
     method: 'POST',
     credentials: 'include',
+    headers: { 'ngrok-skip-browser-warning': 'true' },
   });
 
   if (!response.ok) {
@@ -69,6 +76,7 @@ export async function getCurrentUser() {
   const response = await fetch(`${API_URL}/api/users/me`, {
     method: 'GET',
     credentials: 'include',
+    headers: { 'ngrok-skip-browser-warning': 'true' },
   });
 
   if (response.status === 401) {

@@ -5,8 +5,9 @@ import searchIcon from '../../assets/icons/search.png';
 import Catalog from "../Menu/Catalog/Catalog";
 import homeIcon from '../../assets/icons/home.png';
 import cartIcon from '../../assets/icons/cart.png';
+import UserMenu from "./UserMenu";
 
-function Header({ onAuthClick }) {
+function Header({ user, onAuthClick, onLogout, onSelectCategory }) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
 
   return (
@@ -48,13 +49,20 @@ function Header({ onAuthClick }) {
             <nav className={styles.navigation}>
               <a href="/" className={styles.navLink}>
                 <img src={homeIcon} alt="Home" className={styles.homeIcon} /></a>
-              <button 
-                className={styles.navLink} 
-                onClick={onAuthClick}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
-                <img src={userIcon} alt="Register" className={styles.userIcon} />
-              </button>
+
+              {/* Якщо юзер авторизований — показати dropdown, інакше — кнопку входу */}
+              {user ? (
+                <UserMenu user={user} onLogout={onLogout} />
+              ) : (
+                <button
+                  className={styles.navLink}
+                  onClick={onAuthClick}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                >
+                  <img src={userIcon} alt="Login" className={styles.userIcon} />
+                </button>
+              )}
+
               <div className={styles.cart}>
                 <img src={cartIcon} alt="Cart" className={styles.cartIcon} />
               </div>
@@ -64,7 +72,11 @@ function Header({ onAuthClick }) {
       </header>
 
       {/* Каталог (sidebar) */}
-      <Catalog isOpen={isCatalogOpen} onClose={() => setIsCatalogOpen(false)} />
+      <Catalog
+        isOpen={isCatalogOpen}
+        onClose={() => setIsCatalogOpen(false)}
+        onSelectCategory={onSelectCategory}
+      />
     </>
   );
 }

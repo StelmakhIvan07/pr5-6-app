@@ -85,6 +85,12 @@
   color: #333;
   font-size: 15px;
   transition: background-color 0.2s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .categoryItem:hover {

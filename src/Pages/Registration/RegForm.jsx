@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './RegForm.module.css';
-import { loginUser, registerUser } from '../../utils/API.js';
+import { loginUser, registerUser } from '../../API/authorization.js';
 
-function RegForm({ onClose }) {
+function RegForm({ onClose, onSuccess }) {
   // 'login' або 'register'
   const [mode, setMode] = useState('login');
 
@@ -24,12 +24,13 @@ function RegForm({ onClose }) {
     setLoading(true);
 
     try {
+      let userData;
       if (mode === 'login') {
-        await loginUser({ email: formData.email, password: formData.password });
+        userData = await loginUser({ email: formData.email, password: formData.password });
       } else {
-        await registerUser(formData);
+        userData = await registerUser(formData);
       }
-      onClose(); // закриваємо форму після успіху
+      onSuccess ? onSuccess(userData) : onClose(); // передаємо юзера або просто закриваємо
     } catch (err) {
       setError(err.message);
     } finally {

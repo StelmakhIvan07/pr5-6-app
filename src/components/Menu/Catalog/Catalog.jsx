@@ -1,20 +1,21 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Catalog.module.css";
+import { getCategories } from "../../../API/catalog.js";
 
-const categories = [
-  { id: 1, icon: "📱", label: "Smartphones and gadgets" },
-  { id: 2, icon: "💻", label: "Laptops and computers" },
-  { id: 3, icon: "🎧", label: "Headphones and audio" },
-  { id: 4, icon: "📷", label: "Photo and video" },
-  { id: 5, icon: "🎮", label: "Games and consoles" },
-  { id: 6, icon: "👕", label: "Clothing and footwear" },
-  { id: 7, icon: "🏠", label: "Home and garden" },
-  { id: 8, icon: "🚗", label: "Auto and moto" },
-  { id: 9, icon: "⚽", label: "Sport and recreation" },
-  { id: 10, icon: "📚", label: "Books and stationery" },
-];
+function Catalog({ isOpen, onClose, onSelectCategory }) {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-function Catalog({ isOpen, onClose }) {
+  // Завантажити категорії з сервера один раз при монтуванні
+  useEffect(() => {
+    setLoading(true);
+    getCategories()
+      .then((data) => setCategories(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
   // Закривати при натисканні Escape
   useEffect(() => {
     const handleKey = (e) => {
@@ -27,8 +28,15 @@ function Catalog({ isOpen, onClose }) {
   // Блокувати скролл сторінки коли каталог відкритий
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
+
+  const handleCategoryClick = (cat) => {
+    onSelectCategory(cat);
+    onClose();
+  };
 
   return (
     <>
@@ -48,12 +56,17 @@ function Catalog({ isOpen, onClose }) {
         </div>
 
         <nav className={styles.nav}>
-          {categories.map((cat) => (
-            <a key={cat.id} href={`/catalog/${cat.id}`} className={styles.categoryItem}>
-              <span className={styles.categoryIcon}>{cat.icon}</span>
-              <span className={styles.categoryLabel}>{cat.label}</span>
+          {loading && <p className={styles.statusText}>Loading...</p>}
+          {error && <p className={styles.statusText}>Error: {error}</p>}
+          {!loading && !error && categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={styles.categoryItem}
+              onClick={() => handleCategoryClick(cat)}
+            >
+              <span className={styles.categoryLabel}>{cat.name}</span>
               <span className={styles.arrow}>›</span>
-            </a>
+            </button>
           ))}
         </nav>
       </aside>

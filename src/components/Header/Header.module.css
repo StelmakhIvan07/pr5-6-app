@@ -169,3 +169,58 @@
     width: 100%;
   }
 }
+
+/* Мобільна версія (< 550px) */
+@media (width <= 550px) {
+  .header {
+    height: 50px;
+  }
+
+  .container {
+    padding: 0 12px;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  /* Менший логотип */
+  .logo a {
+    font-size: 18px;
+  }
+
+  /* Ховаємо пошук на маленьких екранах */
+  .searchContainer {
+    display: none;
+  }
+
+  /* Компактніша навігація */
+  .navigation {
+    gap: 12px;
+  }
+
+  .homeIcon {
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+  }
+
+  .userIcon {
+    width: 14px;
+    height: 14px;
+    padding: 3px;
+  }
+
+  .cartIcon {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* Менша кнопка-бургер */
+  .burgerBtn {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .burgerLine {
+    width: 18px;
+  }
+}

@@ -11,9 +11,11 @@ function Card({ image, title, price }) {
                 }
             </div>
             <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{title || "Product Name"}</h3>
+                <div className={styles.cardTitleWrapper}>
+                    <h3 className={styles.cardTitle}>{title || "Product Name"}</h3>
+                </div>
                 <div className={styles.cardFooter}>
-                    <span className={styles.cardPrice}>{price || "$299"}</span>
+                    <span className={styles.cardPrice}>{price || "₴---"}</span>
                     <button className={styles.addBtn} aria-label="Add to cart">+</button>
                 </div>
             </div>

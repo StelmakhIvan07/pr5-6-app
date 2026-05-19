@@ -51,14 +51,14 @@ export default function ProfilePage({ user, onBack }) {
       {!loading && !error && orders.length > 0 && (
         <div className={styles.orderList}>
           {orders.map((order, index) => (
-            <div className={styles.orderCard} key={order.id || index}>
+            <div className={styles.orderCard} key={order.orderId || index}>
               <div className={styles.orderHeader}>
                 <span className={styles.orderId}>
-                  Замовлення #{order.id ? String(order.id).slice(0, 8) : index + 1}
+                  Order #{order.orderId ? String(order.orderId).slice(0, 8) : index + 1}
                 </span>
-                {order.createdAt && (
+                {order.orderDate && (
                   <span className={styles.orderDate}>
-                    {new Date(order.createdAt).toLocaleDateString("uk-UA", {
+                    {new Date(order.orderDate).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
@@ -76,24 +76,22 @@ export default function ProfilePage({ user, onBack }) {
               {order.items && order.items.length > 0 && (
                 <div className={styles.orderItems}>
                   {order.items.map((item, i) => (
-                    <div className={styles.orderItem} key={i}>
+                    <div className={styles.orderItem} key={item.id || i}>
                       <span className={styles.itemName}>
-                        {item.productName || item.title || `Товар ${i + 1}`}
+                        {item.product?.productName || `Product ${i + 1}`}
                       </span>
                       <span className={styles.itemQty}>×{item.quantity}</span>
-                      {item.price != null && (
-                        <span className={styles.itemPrice}>
-                          {item.price * item.quantity} грн
-                        </span>
-                      )}
+                      <span className={styles.itemPrice}>
+                        {item.purchasedPrice} ₴
+                      </span>
                     </div>
                   ))}
                 </div>
               )}
 
-              {order.totalPrice != null && (
+              {order.totalAmount != null && (
                 <div className={styles.orderTotal}>
-                  Together: <strong>{order.totalPrice} ₴</strong>
+                  Total: <strong>{order.totalAmount} ₴</strong>
                 </div>
               )}
             </div>

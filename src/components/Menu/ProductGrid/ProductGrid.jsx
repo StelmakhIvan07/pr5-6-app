@@ -41,7 +41,7 @@ function ProductGrid({ category, onBack }) {
               id={product.id}
               image={product.imageUrl}
               title={product.productName}
-              price={`${product.productPrice} грн`}
+              price={`${product.productPrice} ₴`}
               numericPrice={product.productPrice}
               description={product.productDescription}
             />

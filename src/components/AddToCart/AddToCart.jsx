@@ -87,7 +87,7 @@ export default function AddToCart({ id, image, title, description, price, numeri
         {/* Ціна + підтвердження */}
         <div className={styles.footer}>
           <span className={styles.price}>
-            {numericPrice ? (numericPrice * quantity) + " грн" : price || "₴---"}
+            {numericPrice ? (numericPrice * quantity) + " ₴" : price || "₴---"}
           </span>
           <button className={styles.confirmBtn} onClick={handleConfirm}>
             Add

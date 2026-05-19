@@ -116,7 +116,7 @@ export default function CartPage({ onBack }) {
             {/* Ціна */}
             <div className={styles.priceBlock}>
               <span className={styles.price}>
-                {item.price * item.quantity} грн
+                {item.price * item.quantity} ₴
               </span>
             </div>
           </div>

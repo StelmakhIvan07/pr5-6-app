@@ -56,53 +56,6 @@
   color: #333;
 }
 
-/* Пошук */
-.searchContainer {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 70%;
-}
-
-.searchForm {
-  display: flex;
-  max-width: 500px;
-  width: 100%;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 8px 15px;
-  border: 2px solid #7abde6;
-  border-right: none;
-  border-radius: 10px 0 0 10px;
-  outline: none;
-  background-color: #fff;
-  color: #333;
-  font-size: 14px;
-}
-
-.searchInput::placeholder {
-  color: #aaa;
-}
-
-.searchButton {
-  padding: 8px 15px;
-  padding-bottom: 5px;
-  background-color: #7abde6;
-  border: none;
-  border-radius: 0 10px 10px 0;
-  cursor: pointer;
-}
-
-.searchIcon {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 /* Навігація */
 .navigation {
   display: flex;

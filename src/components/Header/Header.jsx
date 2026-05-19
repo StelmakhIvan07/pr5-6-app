@@ -30,20 +30,6 @@ function Header({ user, onAuthClick, onLogout, onSelectCategory }) {
             <a href="/">Store</a>
           </div>
 
-          {/* Пошукове меню */}
-          <div className={styles.searchContainer}>
-            <form className={styles.searchForm}>
-              <input
-                type="text"
-                placeholder="Search..."
-                className={styles.searchInput}
-              />
-              <button type="submit" className={styles.searchButton}>
-                <img src={searchIcon} alt="Search" className={styles.searchIcon} />
-              </button>
-            </form>
-          </div>
-
           {/* Навігація та дії */}
           <div className={styles.navigationContainer}>
             <nav className={styles.navigation}>

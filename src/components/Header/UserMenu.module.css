@@ -60,6 +60,25 @@
   margin: 0 0 8px;
 }
 
+.profileBtn {
+  width: 100%;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 0;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 6px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.profileBtn:hover {
+  background: #e0e0e0;
+}
+
 .logoutBtn {
   width: 100%;
   background: #ff4d4f;

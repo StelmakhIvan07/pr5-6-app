@@ -38,9 +38,12 @@ function ProductGrid({ category, onBack }) {
           {products.map((product) => (
             <Card
               key={product.id}
+              id={product.id}
               image={product.imageUrl}
               title={product.productName}
               price={`${product.productPrice} грн`}
+              numericPrice={product.productPrice}
+              description={product.productDescription}
             />
           ))}
         </div>

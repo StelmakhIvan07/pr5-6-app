@@ -74,6 +74,10 @@
   cursor: pointer;
 }
 
+.homeIcon:hover {
+  transform: scale(1.1);
+}
+
 .userIcon {
   display: flex;
   align-items: center;
@@ -85,25 +89,64 @@
   cursor: pointer;
 }
 
+.userIcon:hover {
+  transform: scale(1.1);
+}
+
 .navLink {
   text-decoration: none;
   color: #555;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.15s ease;
+  display: inline-flex;
 }
 
 .navLink:hover {
   color: #007bff;
+  transform: scale(1.1);
 }
 
 /* Кошик */
+.cartBtn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.cartBtn:hover {
+  transform: scale(1.1);
+}
+
 .cartIcon {
   font-size: 18px;
   width: 19px;
   height: 19px;
+  display: block;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #ff4d4d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
+  padding: 0 4px;
+  box-sizing: border-box;
 }
 
 /* Адаптивність для мобільних пристроїв */

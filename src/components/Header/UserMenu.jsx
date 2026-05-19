@@ -3,7 +3,7 @@ import styles from './UserMenu.module.css';
 import userIcon from '../../assets/icons/user.png';
 import { logoutUser } from '../../API/authorization.js';
 
-function UserMenu({ user, onLogout }) {
+function UserMenu({ user, onLogout, onProfileClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -29,6 +29,11 @@ function UserMenu({ user, onLogout }) {
     }
   };
 
+  const handleProfile = () => {
+    setIsOpen(false);
+    if (onProfileClick) onProfileClick();
+  };
+
   return (
     <div className={styles.wrapper} ref={menuRef}>
       <button
@@ -41,8 +46,11 @@ function UserMenu({ user, onLogout }) {
 
       {isOpen && (
         <div className={styles.dropdown}>
-          <p className={styles.username}>👤 {user.username}</p>
+          <p className={styles.username}>👤 {user.userName}</p>
           <hr className={styles.divider} />
+          <button className={styles.profileBtn} onClick={handleProfile}>
+            Profile
+          </button>
           <button className={styles.logoutBtn} onClick={handleLogout}>
             Log out
           </button>

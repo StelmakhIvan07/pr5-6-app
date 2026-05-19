@@ -7,7 +7,7 @@ function RegForm({ onClose, onSuccess }) {
   const [mode, setMode] = useState('login');
 
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     email: '',
     password: '',
   });
@@ -28,7 +28,9 @@ function RegForm({ onClose, onSuccess }) {
       if (mode === 'login') {
         userData = await loginUser({ email: formData.email, password: formData.password });
       } else {
-        userData = await registerUser(formData);
+        await registerUser(formData);
+        // Після реєстрації — автоматичний логін для отримання куки сесії
+        userData = await loginUser({ email: formData.email, password: formData.password });
       }
       onSuccess ? onSuccess(userData) : onClose(); // передаємо юзера або просто закриваємо
     } catch (err) {
@@ -61,9 +63,9 @@ function RegForm({ onClose, onSuccess }) {
             <div className={styles.inputBox}>
               <input
                 type="text"
-                name="username"
+                name="userName"
                 placeholder="Username"
-                value={formData.username}
+                value={formData.userName}
                 onChange={handleChange}
                 required
               />

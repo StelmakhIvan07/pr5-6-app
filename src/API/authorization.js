@@ -3,10 +3,10 @@ import { API_URL } from './consts.js';
 /**
  * Реєстрація нового користувача.
  * POST /api/users/register
- * Body: { username, email, password }
+ * Body: { userName, email, password }
  */
 
-export async function registerUser({ username, email, password }) {
+export async function registerUser({ userName, email, password }) {
   const response = await fetch(`${API_URL}/api/users/register`, {
     method: 'POST',
     headers: {
@@ -14,7 +14,7 @@ export async function registerUser({ username, email, password }) {
       'ngrok-skip-browser-warning': 'true',
     },
     credentials: 'include',            // передаємо/отримуємо куки
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ userName, email, password }),
   });
 
   if (!response.ok) {
@@ -47,7 +47,7 @@ export async function loginUser({ email, password }) {
     throw new Error(errorText || 'Invalid email or password');
   }
 
-  return response.json();
+  return response;
 }
 
 /**

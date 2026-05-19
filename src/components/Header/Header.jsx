@@ -6,9 +6,11 @@ import Catalog from "../Menu/Catalog/Catalog";
 import homeIcon from '../../assets/icons/home.png';
 import cartIcon from '../../assets/icons/cart.png';
 import UserMenu from "./UserMenu";
+import { useCart } from "../../hooks/useCart";
 
-function Header({ user, onAuthClick, onLogout, onSelectCategory }) {
+function Header({ user, onAuthClick, onLogout, onSelectCategory, onCartClick, onProfileClick }) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
     <>
@@ -38,7 +40,7 @@ function Header({ user, onAuthClick, onLogout, onSelectCategory }) {
 
               {/* Якщо юзер авторизований — показати dropdown, інакше — кнопку входу */}
               {user ? (
-                <UserMenu user={user} onLogout={onLogout} />
+                <UserMenu user={user} onLogout={onLogout} onProfileClick={onProfileClick} />
               ) : (
                 <button
                   className={styles.navLink}
@@ -49,9 +51,16 @@ function Header({ user, onAuthClick, onLogout, onSelectCategory }) {
                 </button>
               )}
 
-              <div className={styles.cart}>
+              <button
+                className={styles.cartBtn}
+                onClick={onCartClick}
+                aria-label="Відкрити кошик"
+              >
                 <img src={cartIcon} alt="Cart" className={styles.cartIcon} />
-              </div>
+                {totalItems > 0 && (
+                  <span className={styles.cartBadge}>{totalItems}</span>
+                )}
+              </button>
             </nav>
           </div>
         </div>

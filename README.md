@@ -4,6 +4,10 @@ This project is designed by CS11 students Stelmakh Ivan and Davyd Press for the 
 
 Stack: React and CSS components / Spring Boot DB based on Java.
 
+# What you can do in store
+
+Our store now support authorization. You can open product categories and choose products you need. Then you can add to cart some items and make order. All orders shown in profile.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

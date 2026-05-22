@@ -5,9 +5,12 @@ import searchIcon from '../../assets/icons/search.png';
 import Catalog from "../Menu/Catalog/Catalog";
 import homeIcon from '../../assets/icons/home.png';
 import cartIcon from '../../assets/icons/cart.png';
+import UserMenu from "./UserMenu";
+import { useCart } from "../../hooks/useCart";
 
-function Header() {
+function Header({ user, onAuthClick, onLogout, onSelectCategory, onCartClick, onProfileClick }) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
     <>
@@ -29,38 +32,46 @@ function Header() {
             <a href="/">Store</a>
           </div>
 
-          {/* Пошукове меню */}
-          <div className={styles.searchContainer}>
-            <form className={styles.searchForm}>
-              <input
-                type="text"
-                placeholder="Пошук товарів..."
-                className={styles.searchInput}
-              />
-              <button type="submit" className={styles.searchButton}>
-                <img src={searchIcon} alt="Search" className={styles.searchIcon} />
-              </button>
-            </form>
-          </div>
-
           {/* Навігація та дії */}
           <div className={styles.navigationContainer}>
             <nav className={styles.navigation}>
               <a href="/" className={styles.navLink}>
                 <img src={homeIcon} alt="Home" className={styles.homeIcon} /></a>
-              <a href="/register" className={styles.navLink}>
-                <img src={userIcon} alt="Register" className={styles.userIcon} />
-              </a>
-              <div className={styles.cart}>
+
+              {/* Якщо юзер авторизований — показати dropdown, інакше — кнопку входу */}
+              {user ? (
+                <UserMenu user={user} onLogout={onLogout} onProfileClick={onProfileClick} />
+              ) : (
+                <button
+                  className={styles.navLink}
+                  onClick={onAuthClick}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                >
+                  <img src={userIcon} alt="Login" className={styles.userIcon} />
+                </button>
+              )}
+
+              <button
+                className={styles.cartBtn}
+                onClick={onCartClick}
+                aria-label="Відкрити кошик"
+              >
                 <img src={cartIcon} alt="Cart" className={styles.cartIcon} />
-              </div>
+                {totalItems > 0 && (
+                  <span className={styles.cartBadge}>{totalItems}</span>
+                )}
+              </button>
             </nav>
           </div>
         </div>
       </header>
 
       {/* Каталог (sidebar) */}
-      <Catalog isOpen={isCatalogOpen} onClose={() => setIsCatalogOpen(false)} />
+      <Catalog
+        isOpen={isCatalogOpen}
+        onClose={() => setIsCatalogOpen(false)}
+        onSelectCategory={onSelectCategory}
+      />
     </>
   );
 }

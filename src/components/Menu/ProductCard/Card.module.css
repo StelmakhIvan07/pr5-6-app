@@ -1,19 +1,23 @@
 .card {
-    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     width: 220px;
     overflow: hidden;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
     padding: 10px;
     margin: 5px;
+    background: rgb(255 255 255 / 10%);
+    border: 2px solid rgb(255 255 255 / 20%);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    background-color: #7abde6;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    background-color: rgb(255 255 255 / 20%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
 }
 
 /* Зображення */
@@ -41,18 +45,27 @@
 /* Контент під фото */
 .cardBody {
     padding: 6px 7px 7px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitleWrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .cardTitle {
     margin: 0 0 10px;
     font-size: 16px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: white;
     transition: color 0.3s ease;
 }
 
 .card:hover .cardTitle {
-    color: #ffffff;
+    color: #fff;
 }
 
 /* Нижня частина: ціна + кнопка */
@@ -60,17 +73,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 .cardPrice {
     font-size: 15px;
     font-weight: 600;
-    color: #333;
+    color: white;
     transition: color 0.3s ease;
 }
 
 .card:hover .cardPrice {
-    color: #ffffff;
+    color: #fff;
 }
 
 /* Кнопка "+" */
@@ -80,7 +94,7 @@
     border-radius: 50%;
     border: none;
     background-color: #1a1a1a;
-    color: #ffffff;
+    color: #fff;
     font-size: 22px;
     line-height: 1;
     display: flex;

@@ -1,0 +1,159 @@
+/* ── Overlay ── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ── Modal (card-style) ── */
+.modal {
+    border-radius: 10px;
+    width: 340px;
+    max-width: 90vw;
+    overflow: hidden;
+    padding: 16px;
+    background: rgb(255 255 255 / 10%);
+    border: 2px solid rgb(255 255 255 / 20%);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.overlay.visible .modal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ── Image ── */
+.imageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background-color: #e8e8e8;
+}
+
+/* ── Title ── */
+.title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+/* ── Description ── */
+.description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgb(255 255 255 / 75%);
+    max-height: 100px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+/* ── Quantity row ── */
+.quantityRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.qtyBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+}
+
+.qtyBtn:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+.qtyBtn:active {
+    transform: scale(0.95);
+}
+
+.quantity {
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: center;
+    user-select: none;
+}
+
+/* ── Footer (price + confirm) ── */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.confirmBtn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.confirmBtn:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+.confirmBtn:active {
+    transform: scale(0.97);
+}
